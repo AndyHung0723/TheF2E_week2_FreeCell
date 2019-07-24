@@ -127,8 +127,11 @@ body {
     width: 8vw;
     height: 12vw;
 }
-.card-item-top {
+.card-item-top, .card-item-base{    
     background-color: rgba(255, 255, 255, 0.08);
+}
+.card-list-top .card-item-bottom {
+    margin-top: -12vw !important;
 }
 .card-item-collect {
     display: flex;
@@ -143,6 +146,9 @@ body {
 /***** content bottom *****/
 .card-item-bottom:not(:first-child) {
     margin-top: -10vw;
+}
+.card-item-bottom:nth-child(2) {
+    margin-top: -12vw;
 }
 .card-item-bottom__icon {
     width: 100%;
