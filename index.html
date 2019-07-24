@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FreeCell</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="#" class="logo__link">
+                <h1>
+                    <span class="logo__text logo__text--green">FREE</span>
+                    <span class="logo__text logo__text--purple">CELL</span>
+                    <div class="clearfix"></div>
+                </h1>
+            </a>
+        </div>
+        <div class="timer">
+            <h2 class="timer__text">00:30</h2>
+        </div>
+        <div class="menu">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="#" class="menu-item__link">
+                        <i class="material-icons">undo</i>
+                        <span>UNDO</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-item__link">
+                        <i class="material-icons">pause</i>
+                        <span>PAUSE</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-item__link">
+                        <i class="material-icons">loop</i>
+                        <span>RESTART</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="card-list card-list-top">
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-collect">
+                    <img class="card-item-collect__icon" src="img/spade-24px-white.svg" />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-collect">
+                    <img class="card-item-collect__icon" src="img/heart-24px-white.svg" />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-collect">
+                    <img class="card-item-collect__icon" src="img/club-24px-white.svg" />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-collect">
+                    <img class="card-item-collect__icon" src="img/diamond-24px-white.svg" />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-temp"></li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-temp"></li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-temp"></li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-top card-item-temp"></li>
+            </ul>
+        </div>
+        <div class="card-list card-list-bottom">
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-2.svg" alt="spade-2">
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-5.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-9.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-3.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-3.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-12.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-13.svg" alt="diamond-13">
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-11.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-7.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-4.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-13.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-13.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-10.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-club-10.svg"  />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-1.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-1.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-7.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-8.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-5.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-2.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-heart-8.svg"  />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-11.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-5.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-4.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-6.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-10.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-12.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-spade-1.svg"  />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-11.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-11.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-7.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-13.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-7.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-5.svg"  />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-6.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-12.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-3.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-2.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-6.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-spade-12.svg"  />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-9.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-4.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-2.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-10.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-4.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-heart-1.svg"  />
+                </li>
+            </ul>
+            <ul class="card-items">
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-spade-8.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-8.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-club-3.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-heart-9.svg"  />
+                </li>
+                <li class="card-item card-item-bottom">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-6.svg"  />
+                </li>
+                <li class="card-item card-item-bottom card-item-drag card-item-drop">
+                    <img class="card-item-bottom__icon" src="img/card-diamond-9.svg"  />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/all.js"></script>
+</body>
+</html>
