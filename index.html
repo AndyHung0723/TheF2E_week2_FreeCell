@@ -8,9 +8,10 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
-    <link rel="stylesheet" href="css/style.css">
+    <script src="js/all.js"></script>
 </head>
 <body>
     <div class="header">
@@ -24,24 +25,26 @@
             </a>
         </div>
         <div class="timer">
-            <h2 class="timer__text">00:30</h2>
+            <h2 class="timer__text">00:00</h2>
         </div>
         <div class="menu">
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="#" class="menu-item__link">
+                    <a href="#" id="undo" class="menu-item__link">
                         <i class="material-icons">undo</i>
                         <span>UNDO</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-item__link">
-                        <i class="material-icons">pause</i>
-                        <span>PAUSE</span>
+                    <a href="#" id="play" class="menu-item__link">
+                        <!-- <i class="material-icons">pause</i>
+                        <span>PAUSE</span> -->
+                        <i class="material-icons">play_arrow</i>
+                        <span>START</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-item__link">
+                    <a href="#" id="restart" class="menu-item__link">
                         <i class="material-icons">loop</i>
                         <span>RESTART</span>
                     </a>
@@ -53,227 +56,111 @@
         <div class="card-list card-list-top">
             <ul class="card-items card-items-top">
                 <li class="card-item card-item-top card-item-collect card-item-drop">
-                    <img class="card-item-collect__icon" src="img/spade-24px-white.svg" />
+                    <img class="card-item-collect__icon" src="img/spade-24px-white.svg" data-suit="spade" data-rank="collect" />
                 </li>
             </ul>
             <ul class="card-items card-items-top">
                 <li class="card-item card-item-top card-item-collect card-item-drop">
-                    <img class="card-item-collect__icon" src="img/heart-24px-white.svg" />
+                    <img class="card-item-collect__icon" src="img/heart-24px-white.svg" data-suit="heart" data-rank="collect" />
                 </li>
             </ul>
             <ul class="card-items card-items-top">
                 <li class="card-item card-item-top card-item-collect card-item-drop">
-                    <img class="card-item-collect__icon" src="img/club-24px-white.svg" />
+                    <img class="card-item-collect__icon" src="img/club-24px-white.svg" data-suit="club" data-rank="collect" />
                 </li>
             </ul>
             <ul class="card-items card-items-top">
                 <li class="card-item card-item-top card-item-collect card-item-drop">
-                    <img class="card-item-collect__icon" src="img/diamond-24px-white.svg" />
+                    <img class="card-item-collect__icon" src="img/diamond-24px-white.svg" data-suit="diamond" data-rank="collect" />
                 </li>
             </ul>
             <ul class="card-items card-items-temp">
-                <li class="card-item card-item-top card-item-temp card-item-drop"></li>
+                <li class="card-item card-item-top card-item-temp card-item-drop">
+                    <pre data-suit="temp" data-rank="1"></pre>
+                </li>
             </ul>
             <ul class="card-items card-items-temp">
-                <li class="card-item card-item-top card-item-temp card-item-drop"></li>
+                <li class="card-item card-item-top card-item-temp card-item-drop">
+                    <pre data-suit="temp" data-rank="2"></pre>
+                </li>
             </ul>
             <ul class="card-items card-items-temp">
-                <li class="card-item card-item-top card-item-temp card-item-drop"></li>
+                <li class="card-item card-item-top card-item-temp card-item-drop">
+                    <pre data-suit="temp" data-rank="3"></pre>
+                </li>
             </ul>
             <ul class="card-items card-items-temp">
-                <li class="card-item card-item-top card-item-temp card-item-drop"></li>
+                <li class="card-item card-item-top card-item-temp card-item-drop">
+                    <pre data-suit="temp" data-rank="4"></pre>
+                </li>
             </ul>
         </div>
         <div class="card-list card-list-bottom">
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-2.svg" data-suit="spade" data-rank="2" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-5.svg" data-suit="heart" data-rank="5" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-9.svg" data-suit="club" data-rank="9" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-3.svg" data-suit="spade" data-rank="3" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-3.svg" data-suit="heart" data-rank="3" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-12.svg" data-suit="club" data-rank="12" />
-                </li>
-                <!-- <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-13.svg" data-suit="diamond" data-rank="13" />
-                </li> -->
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-spade-2.svg" data-suit="spade" data-rank="2" />
-                </li>
+            </ul>
+            <ul class="card-items card-items-bottom">
+                <li class="card-item card-item-bottom card-item-base"></li>  
             </ul>
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-11.svg" data-suit="club" data-rank="11" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-7.svg" data-suit="club" data-rank="7" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-4.svg" data-suit="diamond" data-rank="4" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-13.svg" data-suit="heart" data-rank="13" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-13.svg" data-suit="spade" data-rank="13" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-10.svg" data-suit="spade" data-rank="10" />
-                </li>
-                <!-- <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-club-10.svg" data-suit="club" data-rank="10" />
-                </li> -->
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-3.svg" data-suit="diamond" data-rank="3" />
-                </li>
             </ul>
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-1.svg" data-suit="club" data-rank="1" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-1.svg" data-suit="diamond" data-rank="1" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-7.svg" data-suit="heart" data-rank="7" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-8.svg" data-suit="club" data-rank="8" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-5.svg" data-suit="spade" data-rank="5" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-2.svg" data-suit="heart" data-rank="2" />
-                </li>
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-heart-8.svg" data-suit="heart" data-rank="8" />
-                </li>
             </ul>
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-11.svg" data-suit="heart" data-rank="11" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-5.svg" data-suit="club" data-rank="5" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-4.svg" data-suit="club" data-rank="4" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-6.svg" data-suit="heart" data-rank="6" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-10.svg" data-suit="heart" data-rank="10" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-12.svg" data-suit="heart" data-rank="12" />
-                </li>
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-spade-1.svg" data-suit="spade" data-rank="1" />
-                </li>
             </ul>
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-11.svg" data-suit="diamond" data-rank="11" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-11.svg" data-suit="spade" data-rank="11" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-7.svg" data-suit="spade" data-rank="7" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-13.svg" data-suit="club" data-rank="13" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-7.svg" data-suit="diamond" data-rank="7"  />
-                </li>
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-5.svg" data-suit="diamond" data-rank="5" />
-                </li>
             </ul>
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-6.svg" data-suit="club" data-rank="6" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-12.svg" data-suit="diamond" data-rank="1" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-3.svg" data-suit="diamond" data-rank="3" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-2.svg" data-suit="diamond" data-rank="2" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-6.svg" data-suit="spade" data-rank="6" />
-                </li>
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-spade-12.svg" data-suit="spade" data-rank="12" />
-                </li>
             </ul>
             <ul class="card-items card-items-bottom">
                 <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-9.svg" data-suit="spade" data-rank="9" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-4.svg" data-suit="spade" data-rank="4" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-2.svg" data-suit="club" data-rank="2" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-10.svg" data-suit="diamond" data-rank="10" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-4.svg" data-suit="heart" data-rank="4" />
-                </li>
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-heart-1.svg" data-suit="heart" data-rank="1" />
-                </li>
-            </ul>
-            <ul class="card-items card-items-bottom">
-                <li class="card-item card-item-bottom card-item-base"></li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-spade-8.svg" data-suit="spade" data-rank="8" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-8.svg" data-suit="diamond" data-rank="8" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-club-3.svg" data-suit="club" data-rank="3" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-heart-9.svg" data-suit="heart" data-rank="9" />
-                </li>
-                <li class="card-item card-item-bottom">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-6.svg" data-suit="diamond" data-rank="6" />
-                </li>
-                <li class="card-item card-item-bottom card-item-drag card-item-drop">
-                    <img class="card-item-bottom__icon" src="img/card-diamond-9.svg" data-suit="diamond" data-rank="9" />
-                </li>
             </ul>
         </div>
     </div>
-
-    <script src="js/all.js"></script>
+    <div id="modal-init" class="modal">
+        <div class="modal-content">
+            <img src="img/logo.png" alt="logo" class="modal-logo">
+            <div class="modal-text">
+                <h1>
+                    <span class="logo__text logo__text--green">FREE</span>
+                    <span class="logo__text logo__text--purple">CELL</span>
+                    <div class="clearfix"></div>
+                </h1>
+            </div>
+            <a href="#" class="modal-btn modal-new__btn">開始遊戲</a>
+        </div>
+    </div>
+    <div id="modal-undo" class="modal">
+        <div class="modal-content">
+            <div class="modal-text">
+                <span class="logo__text logo__text--green">已無上一步!</span>
+            </div>
+            <a href="#" class="modal-btn modal-close__btn">確定</a>
+        </div>
+    </div>
+    <div id="modal-start" class="modal">
+        <div class="modal-content">
+            <div class="modal-text">
+                <span class="logo__text logo__text--green">暫停中...</span>
+            </div>
+            <a href="#" class="modal-btn modal-start__btn">開始</a>
+        </div>
+    </div>
+    <div id="modal-restart" class="modal">
+        <div class="modal-content">
+            <div class="modal-text">
+                <span class="logo__text logo__text--green">確定要重新開始嗎?</span>
+            </div>
+            <div class="modal-btn__group">
+                <a href="#" class="modal-btn modal-restart__btn">確定</a>
+                <a href="#" class="modal-btn modal-cancel__btn">取消</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
