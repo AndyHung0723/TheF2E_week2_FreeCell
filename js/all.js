@@ -18,21 +18,25 @@ function setGame() {
     // 將排組 append 到列上
     var cnt = 0;
     $('.card-items-bottom').each((index, el) => {
-        var len = index > 3 ? 6 : 7;
-        for(var i = 0 ; i < len ; i++) {
-            if(i == len-1) {
-                $(el).append('<li class="card-item card-item-bottom card-item-drop"><img class="card-item-bottom__icon" src="img/card-'+all[cnt].split('-')[0]+'-'+all[cnt].split('-')[1]+'.svg" data-suit="'+all[cnt].split('-')[0]+'" data-rank="'+all[cnt].split('-')[1]+'" /></li>');
-            }else {
-                $(el).append('<li class="card-item card-item-bottom"><img class="card-item-bottom__icon" src="img/card-'+all[cnt].split('-')[0]+'-'+all[cnt].split('-')[1]+'.svg" data-suit="'+all[cnt].split('-')[0]+'" data-rank="'+all[cnt].split('-')[1]+'" /></li>');
+        if(all.length > cnt) {
+            var len = index > 3 ? 6 : 7;
+            for(var i = 0 ; i < len ; i++) {
+                if(i == len-1) {
+                    $(el).append('<li class="card-item card-item-bottom card-item-drop"><img class="card-item-bottom__icon" src="img/card-'+all[cnt].split('-')[0]+'-'+all[cnt].split('-')[1]+'.svg" data-suit="'+all[cnt].split('-')[0]+'" data-rank="'+all[cnt].split('-')[1]+'" /></li>');
+                }else {
+                    $(el).append('<li class="card-item card-item-bottom"><img class="card-item-bottom__icon" src="img/card-'+all[cnt].split('-')[0]+'-'+all[cnt].split('-')[1]+'.svg" data-suit="'+all[cnt].split('-')[0]+'" data-rank="'+all[cnt].split('-')[1]+'" /></li>');
+                }
+                cnt++;
             }
-            cnt++;
         }
     });
     // 將記錄步數資料清空
     localStorage.setItem('step_record', '[]');
     localStorage.setItem('current_step', '[]');
+    // 將上方列設為可放牌
+    $('.card-item-top:not(.card-item-drop)').addClass('card-item-drop');
 }
-//設定拉動元件
+// 設定拉動元件
 function setDrag() {
     // mousedown 時再即時去判斷是否為 draggable
     $('.card-item-bottom').mousedown((e) => {
@@ -154,6 +158,10 @@ function setDrop() {
                 $($(this).get(0)).removeClass('card-item-drag card-item-drop ui-draggable ui-draggable-handle ui-droppable');
                 // 再呼叫一次設定
                 setDrop();
+                // 判斷是否已經完成牌局
+                if($('.card-items-bottom').children().length == 8 && $('.card-items-temp').children().length == 4) {
+                    $('#modal-finish').show();
+                }
             }
         }
     });
@@ -237,13 +245,15 @@ function setRestart() {
 }
 // 清除場面上所有牌
 function clearGame() {
-    $('.card-item-bottom').remove();
+    $('.card-item-bottom:not(.card-item-base)').remove();
 }
 // 設定 Dialog
 function setModal() {
     $('.modal-new__btn').click(() => {
         // 關閉 Modal
         setModalClose();
+        // 清空場面
+        clearGame();
         // 設定選單動作
         setMenuAction();
         // 設定牌局
